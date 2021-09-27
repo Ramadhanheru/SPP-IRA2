@@ -158,7 +158,7 @@ class Model_data extends CI_Model
 	{
 		$data = [
 			
-			"kas" => $this->input->post('kas')
+			"nominal" => $this->input->post('nominal')
 		];
 		
 		$this->db->where('id_kas', $id);

@@ -41,34 +41,7 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div>
-              <!-- modal ubah biaya daftar -->
-              <div class="modal fade" id="ubah-data-biaya-daftar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="myLargeModalLabel">Form Ubah Data</h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-12">
-                          <div class="card">
-                            <form class="mt-2" action="" method="post">
-                              <div class="card-body">
-                                <div class="form-group">
-                                  <label for="exampleInputPassword2">Ubah Nominal</label>
-                                  <input type="text" class="form-control" id="exampleInputPassword2" name="harga_m" required>
-                                </div>
-                                <input type="submit" class="btn btn-info mb-3 merah" name="simpan" value="Simpan">
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div>
+              
             </div>
             <div class=" card-body">
               <div class="table-responsive">
@@ -88,9 +61,38 @@
                     <tr>
                       <td><?= $q->nominal; ?></td>
                       <td>
-                        <a href="#" data-toggle="modal" data-target="#ubah-data-biaya-daftar"><i class="fa fa-edit" style="color:#2DB28B "></i></a> 
+                        <a href="#" data-toggle="modal" data-target="#ubah-data-biaya-kas<?= $q->id_kas; ?>"><i class="fa fa-edit" style="color:#2DB28B "></i></a> 
                       </td>
                     </tr>
+                    <!-- modal ubah biaya daftar -->
+              <div class="modal fade" id="ubah-data-biaya-kas<?= $q->id_kas; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myLargeModalLabel">Form Ubah Data</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-12">
+                          <div class="card">
+                            <form class="mt-2" action="<?= base_url('welcome/edit_kas') ?>" method="post">
+                              <div class="card-body">
+                                <div class="form-group">
+                                  <label for="exampleInputPassword2">Ubah Nominal</label>
+                                   <input type="hidden" class="form-control" id="exampleInputPassword2" name="id_kas" value="<?= $q->id_kas ?>"required>
+                                  <input type="text" class="form-control" id="exampleInputPassword2" name="nominal" value="<?= $q->nominal ?>"required>
+                                </div>
+                                <input type="submit" class="btn btn-info mb-3 merah" name="simpan" value="Simpan">
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div>
                     <?php $no++; } ?>
                   </tbody>
                 </table>

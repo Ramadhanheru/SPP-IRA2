@@ -503,7 +503,22 @@ class Welcome extends CI_Controller {
 		$this->load->view('data',$data);
 		$this->load->view('template/footer');
 	}
+	public function edit_kas(){
+		$id = $this->input->post('id_kas');
 
+		$this->form_validation->set_rules('nominal','nominal','required|trim');
+		if( $this->form_validation->run()==false){
+			$this->data();
+
+		}else{
+
+
+				$proses = $this->Model_data->edit_kas($id);
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				redirect('welcome/data');
+		}
+	}
 	public function tambah_biaya_daftar()
 	{
 		$this->form_validation->set_rules('nama_item','nama_item','required|trim');
