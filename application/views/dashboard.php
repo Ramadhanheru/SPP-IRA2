@@ -71,15 +71,24 @@
 									</select>
 								</div>
 								<div class="form-group">
-									<input name="pnbp"  type="text" class="form-control" id="pnbp" placeholder="PNBP">
+									<select name="pnbp" class="custom-select mr-sm-2" id="pnbp">
+										<option value="0">-- Pilih PNBP --</option>
+										<option value="10000">Rp. 10.000 </option>
+										</select>
 								</div>
 								<div class="form-group">
-									<input name="materai"  type="text" class="form-control" id="materai" placeholder="Materai">
+									<select name="materai" class="custom-select mr-sm-2" id="materai">
+										<option value="0">-- Pilih Materai --</option>
+										<option value="10000">Rp. 10.000 </option>
+										</select>
 								</div>
 							</div>
 							<div class="col">
 								<div class="form-group">
-									<input name="redaksi"  type="text" class="form-control" id="redaksi" placeholder="Redaksi">
+									<select name="redaksi" class="custom-select mr-sm-2" id="redaksi">
+										<option value="0">-- Pilih Redaksi --</option>
+										<option value="10000">Rp. 10.000 </option>
+										</select>
 								</div>
 								<div class="form-group">
 									<input name="panjar"  type="text" class="form-control" id="panjar" placeholder="Panjar">

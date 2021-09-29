@@ -23,6 +23,7 @@
 
 
             <div class=" card-body">
+              <?= $this->session->flashdata('message') ?>
               <div class="table-">
                 <!-- filter tanggal -->
                 <div class="row pb-12">

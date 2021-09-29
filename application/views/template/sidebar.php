@@ -7,7 +7,7 @@
 
     </div>
     <div class="sidebar-brand-text mx-3">
-      <h3>SPP</h3>
+      <h3>Sipentung</h3>
     </div>
   </a>
 

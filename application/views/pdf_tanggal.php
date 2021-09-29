@@ -10,7 +10,7 @@
 	<h4 style="text-align: center;">Buku Kas Bantu</h4>
     <p style="text-align: center;">Tanggal: <?= date("d-m-Y", strtotime($tanggal));   ?></p>
     <center>
-    	<div style="padding-right: 100px;">
+    	<div style="padding:-35px; margin-top: 50px;">
 	<table class="table table-bordered" style="width: 100%;">
 								<tr style="text-align: center; " class="table table-success">
 									<th rowspan="2">Tgl</th>
@@ -18,7 +18,7 @@
 									<th rowspan="2">No. Perkara</th>
 									<th rowspan="2">Uraian</th>
 									<th colspan="2">Jumlah</th>
-									<th rowspan="2">Keterangan</th>
+									<th rowspan="2" style="width: 100px;">Keterangan</th>
 								</tr>
 								<tr style="text-align: center;" class="table table-success">
 									<th>Penerimaan</th>

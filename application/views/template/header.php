@@ -40,11 +40,11 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
     <div class="sidebar-brand-icon">
-      <img src="<?= base_url(''); ?>assets/img/logo-free.png" width="40px">
+      <img src="<?= base_url(''); ?>assets/img/logo-free.png" width="35px">
 
     </div>
     <div class="sidebar-brand-text mx-3">
-      <h3>SPP</h3>
+      <h3>Sipentung</h3>
     </div>
   </a>
 

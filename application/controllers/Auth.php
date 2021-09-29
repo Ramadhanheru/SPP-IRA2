@@ -40,7 +40,7 @@ class Auth extends CI_Controller {
 					if (password_verify($password, $user['password'])) {
                    
                    $this->session->set_userdata(array('username'=>$userr,'password'=>$password,'role' => $user['role']));
-					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$userr.' ! </div>');
+					$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert">Welcome '.$user['nama'].' ! </div>');
 					redirect('Welcome');
 
                 } else {

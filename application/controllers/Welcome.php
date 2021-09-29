@@ -358,10 +358,11 @@ class Welcome extends CI_Controller {
 
 		
 		if($this->input->post('excel')&&$this->input->post('tanggal')){
-
-			$tanggal = $this->input->post('tanggal');
+				$tanggal = $this->input->post('tanggal');
 			$data['query'] = $this->Model_data->tampil_transaksi_tanggal($tanggal);
 			$this->load->view('excel_tanggal',$data);
+			
+			
 		}else{
 			$tanggal = "";
 		}
