@@ -58,8 +58,8 @@
                   <td></td>
                   <td></td>
                   <td><?= $q->nama_itemm; ?></td>
-                  <td></td>
                   <td><?= number_format($q->biaya_daftar,2,',','.'); ?></td>
+                  <td></td>
                   <td></td>
                   <td>
                   </td>
@@ -253,8 +253,8 @@
                 <?php
                 
                 foreach($query->result() as $q) {
-                $pengeluaran = $q->biaya_daftar+$q->biaya_proses+$q->panggilan_penggugat+$q->panggilan_tergugat+$q->pemberitahuan_penggugat+$q->pemberitahuan_tergugat+$q->pnbp+$q->materai+$q->redaksi+$q->sisa_panjar+$q->delegasi_panggilan+$q->delegasi_pemberitahuan+$q->delegasi_pengiriman;
-                $penerimaan = $q->panjar+$q->tambah_panjar;
+                $pengeluaran = $q->biaya_proses+$q->panggilan_penggugat+$q->panggilan_tergugat+$q->pemberitahuan_penggugat+$q->pemberitahuan_tergugat+$q->pnbp+$q->materai+$q->redaksi+$q->sisa_panjar+$q->delegasi_panggilan+$q->delegasi_pemberitahuan+$q->delegasi_pengiriman;
+                $penerimaan = $q->biaya_daftar+$q->panjar+$q->tambah_panjar;
 
                 $pengeluaran;
                 $penerimaan;
