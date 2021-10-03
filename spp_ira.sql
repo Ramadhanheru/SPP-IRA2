@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2021 at 07:49 AM
+-- Generation Time: Oct 03, 2021 at 07:14 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -39,7 +39,11 @@ CREATE TABLE `biaya_daftar` (
 --
 
 INSERT INTO `biaya_daftar` (`id_biaya_daftar`, `nama_item`, `harga_item`) VALUES
-(0, '--Pilih Biaya daftar--', 0);
+(0, '--Pilih Biaya daftar--', 0),
+(5, 'Panjar Biaya Perkara', 30000),
+(6, 'Panjar Biaya Perkara Banding', 50000),
+(7, 'Panjar Biaya Perkara Kasasi', 50000),
+(8, 'Panjar Biaya Perkara Peninjauan Kembali', 50000);
 
 -- --------------------------------------------------------
 
@@ -57,7 +61,7 @@ CREATE TABLE `kas` (
 --
 
 INSERT INTO `kas` (`id_kas`, `nominal`) VALUES
-(1, 10000000);
+(1, 3472000);
 
 -- --------------------------------------------------------
 
@@ -145,12 +149,12 @@ CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `no_perkara` varchar(60) NOT NULL,
-  `id_biaya_daftar` int(11) DEFAULT NULL,
+  `id_biaya_daftar` int(11) NOT NULL DEFAULT 0,
   `biaya_proses` int(11) DEFAULT NULL,
-  `id_panggilan_penggugat` int(11) DEFAULT NULL,
-  `id_panggilan_tergugat` int(11) DEFAULT NULL,
-  `id_pemberitahuan_penggugat` int(11) DEFAULT NULL,
-  `id_pemberitahuan_tergugat` int(11) DEFAULT NULL,
+  `id_panggilan_penggugat` int(11) NOT NULL DEFAULT 0,
+  `id_panggilan_tergugat` int(11) NOT NULL DEFAULT 0,
+  `id_pemberitahuan_penggugat` int(11) NOT NULL DEFAULT 0,
+  `id_pemberitahuan_tergugat` int(11) NOT NULL DEFAULT 0,
   `pnbp` int(11) DEFAULT NULL,
   `materai` int(11) DEFAULT NULL,
   `redaksi` int(11) DEFAULT NULL,
@@ -162,6 +166,14 @@ CREATE TABLE `transaksi` (
   `delegasi_pengiriman` int(11) DEFAULT NULL,
   `keterangan` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `tanggal`, `no_perkara`, `id_biaya_daftar`, `biaya_proses`, `id_panggilan_penggugat`, `id_panggilan_tergugat`, `id_pemberitahuan_penggugat`, `id_pemberitahuan_tergugat`, `pnbp`, `materai`, `redaksi`, `panjar`, `tambah_panjar`, `sisa_panjar`, `delegasi_panggilan`, `delegasi_pemberitahuan`, `delegasi_pengiriman`, `keterangan`) VALUES
+(30, '2021-10-03', '52/pdt-P/2021/PN NB', 8, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, '2021-10-04', 'abcdf123', 6, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aaa');
 
 -- --------------------------------------------------------
 
@@ -253,7 +265,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `biaya_daftar`
 --
 ALTER TABLE `biaya_daftar`
-  MODIFY `id_biaya_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_biaya_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kas`
@@ -289,7 +301,7 @@ ALTER TABLE `pemberitahuan_tergugat`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user`

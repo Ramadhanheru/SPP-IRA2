@@ -50,7 +50,7 @@
 									<td></td>
 									<td></td>
 									<td></td>
-									<td>biaya daftar</td>
+									<td><?= $q->nama_itemm; ?></td>
 									<td></td>
 									<td><?= number_format($q->biaya_daftar,2,',','.'); ?></td>
 									<td></td>

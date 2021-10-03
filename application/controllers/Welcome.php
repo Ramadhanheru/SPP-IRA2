@@ -36,8 +36,9 @@ class Welcome extends CI_Controller {
 		$data['query5'] = $this->Model_data->tampil_pemberitahuan_tergugat();
 		$data['query6'] = $this->db->get_where('kas',['id_kas'=>'1'])->row_array();
 		$data['user'] = $this->db->get_where('user',['username'=> $this->session->userdata('username')])->row_array();
+		
 		$this->load->view('template/header',$data);
-		$this->load->view('dashboard',$data);
+		$this->load->view('dashboard2',$data);
 		$this->load->view('template/footer');
 	}
 	public function print_berita_acara(){
@@ -98,6 +99,34 @@ class Welcome extends CI_Controller {
 			$data['query'] = $this->Model_data->tampil_transaksi_bulan($bulan,$tahun);
 		$this->load->view('laporan-berita-acara',$data);
 		
+	}
+	public function tambah_transaksi2()
+	{
+		$kategori_biaya = $this->input->post('kategori_biaya');
+		$this->form_validation->set_rules('no_perkara','no_perkara','required|trim');
+		$this->form_validation->set_rules('tanggal','tanggal','required|trim');
+		$this->form_validation->set_rules('kategori_biaya','kategori_biaya','required|trim');
+
+		if( $this->form_validation->run()==false){
+			$this->index();
+
+		}else{
+
+			$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	$kategori_biaya => $this->input->post('jenis_biaya', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+
+				$proses = $this->Model_data->tambah_transaksi($data);
+				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				redirect('welcome');
+
+		}
+
 	}
 	public function tambah_transaksi()
 	{

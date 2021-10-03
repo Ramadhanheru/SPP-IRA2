@@ -7,7 +7,7 @@ class Model_data extends CI_Model
 	// transaksi
 	public function tampil_transaksi()
 	{
-		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
+		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
 		$this->db->from('transaksi');
 		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksi.id_biaya_daftar');
 		$this->db->join('panggilan_penggugat','panggilan_penggugat.id_panggilan_penggugat = transaksi.id_panggilan_penggugat');
@@ -21,7 +21,7 @@ class Model_data extends CI_Model
 	}
 	public function tampil_transaksi_tanggal($tanggal)
 	{
-		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
+		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
 		$this->db->from('transaksi');
 		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksi.id_biaya_daftar');
 		$this->db->join('panggilan_penggugat','panggilan_penggugat.id_panggilan_penggugat = transaksi.id_panggilan_penggugat');
@@ -36,7 +36,7 @@ class Model_data extends CI_Model
 	}
 	public function tampil_transaksi_bulan($bulan,$tahun)
 	{
-		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
+		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
 		$this->db->from('transaksi');
 		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksi.id_biaya_daftar');
 		$this->db->join('panggilan_penggugat','panggilan_penggugat.id_panggilan_penggugat = transaksi.id_panggilan_penggugat');
@@ -52,7 +52,7 @@ class Model_data extends CI_Model
 	}
 	public function tampil_transaksi_tanggal_0()
 	{
-		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
+		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
 		$this->db->from('transaksi');
 		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksi.id_biaya_daftar');
 		$this->db->join('panggilan_penggugat','panggilan_penggugat.id_panggilan_penggugat = transaksi.id_panggilan_penggugat');
@@ -67,7 +67,7 @@ class Model_data extends CI_Model
 	}
 	public function tampil_rincian_transaksi($id)
 	{
-		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
+		$this->db->select('transaksi.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm, panggilan_penggugat.harga_item as panggilan_penggugat,panggilan_tergugat.harga_item as panggilan_tergugat, pemberitahuan_penggugat.harga_item as pemberitahuan_penggugat,pemberitahuan_tergugat.harga_item as pemberitahuan_tergugat,');
 		$this->db->from('transaksi');
 		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksi.id_biaya_daftar');
 		$this->db->join('panggilan_penggugat','panggilan_penggugat.id_panggilan_penggugat = transaksi.id_panggilan_penggugat');
