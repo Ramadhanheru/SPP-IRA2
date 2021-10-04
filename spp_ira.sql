@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2021 at 07:14 PM
+-- Generation Time: Oct 04, 2021 at 06:07 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -39,7 +39,7 @@ CREATE TABLE `biaya_daftar` (
 --
 
 INSERT INTO `biaya_daftar` (`id_biaya_daftar`, `nama_item`, `harga_item`) VALUES
-(0, '--Pilih Biaya daftar--', 0),
+(0, '--Pilih Biaya perkara--', 0),
 (5, 'Panjar Biaya Perkara', 30000),
 (6, 'Panjar Biaya Perkara Banding', 50000),
 (7, 'Panjar Biaya Perkara Kasasi', 50000),
@@ -142,38 +142,40 @@ INSERT INTO `pemberitahuan_tergugat` (`id_pemberitahuan_tergugat`, `nama_item`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Table structure for table `transaksii`
 --
 
-CREATE TABLE `transaksi` (
+CREATE TABLE `transaksii` (
   `id_transaksi` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
   `no_perkara` varchar(60) NOT NULL,
+  `tanggal` text NOT NULL,
   `id_biaya_daftar` int(11) NOT NULL DEFAULT 0,
-  `biaya_proses` int(11) DEFAULT NULL,
-  `id_panggilan_penggugat` int(11) NOT NULL DEFAULT 0,
-  `id_panggilan_tergugat` int(11) NOT NULL DEFAULT 0,
-  `id_pemberitahuan_penggugat` int(11) NOT NULL DEFAULT 0,
-  `id_pemberitahuan_tergugat` int(11) NOT NULL DEFAULT 0,
-  `pnbp` int(11) DEFAULT NULL,
-  `materai` int(11) DEFAULT NULL,
-  `redaksi` int(11) DEFAULT NULL,
-  `panjar` int(11) DEFAULT NULL,
-  `tambah_panjar` int(11) DEFAULT NULL,
-  `sisa_panjar` int(11) DEFAULT NULL,
-  `delegasi_panggilan` int(11) DEFAULT NULL,
-  `delegasi_pemberitahuan` int(11) DEFAULT NULL,
-  `delegasi_pengiriman` int(11) DEFAULT NULL,
+  `tambah_panjar` int(11) NOT NULL DEFAULT 0,
+  `sisa_panjar` int(11) NOT NULL DEFAULT 0,
+  `negara_panjar` int(11) NOT NULL DEFAULT 0,
+  `panggilan_penggugat` int(11) NOT NULL DEFAULT 0,
+  `panggilan_tergugat` int(11) NOT NULL DEFAULT 0,
+  `panggilan_pemohon` int(11) NOT NULL DEFAULT 0,
+  `pemberitahuan_penggugat` int(11) NOT NULL DEFAULT 0,
+  `pemberitahuan_tergugat` int(11) NOT NULL DEFAULT 0,
+  `pemeriksaan` int(11) NOT NULL DEFAULT 0,
+  `materai` int(11) NOT NULL DEFAULT 0,
+  `pnbp` int(11) NOT NULL DEFAULT 0,
+  `biaya_proses` int(11) NOT NULL DEFAULT 0,
+  `redaksi` int(11) NOT NULL DEFAULT 0,
+  `delegasi` int(11) NOT NULL DEFAULT 0,
   `keterangan` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `transaksi`
+-- Dumping data for table `transaksii`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `tanggal`, `no_perkara`, `id_biaya_daftar`, `biaya_proses`, `id_panggilan_penggugat`, `id_panggilan_tergugat`, `id_pemberitahuan_penggugat`, `id_pemberitahuan_tergugat`, `pnbp`, `materai`, `redaksi`, `panjar`, `tambah_panjar`, `sisa_panjar`, `delegasi_panggilan`, `delegasi_pemberitahuan`, `delegasi_pengiriman`, `keterangan`) VALUES
-(30, '2021-10-03', '52/pdt-P/2021/PN NB', 8, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, '2021-10-04', 'abcdf123', 6, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aaa');
+INSERT INTO `transaksii` (`id_transaksi`, `no_perkara`, `tanggal`, `id_biaya_daftar`, `tambah_panjar`, `sisa_panjar`, `negara_panjar`, `panggilan_penggugat`, `panggilan_tergugat`, `panggilan_pemohon`, `pemberitahuan_penggugat`, `pemberitahuan_tergugat`, `pemeriksaan`, `materai`, `pnbp`, `biaya_proses`, `redaksi`, `delegasi`, `keterangan`) VALUES
+(21, 'abcdf123', '2021-10-04', 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(24, '52/pdt-P/2021/PN NBA', '2021-10-04', 0, 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(25, '52/pdt-P/2021/PN NBA', '2021-10-04', 0, 0, 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(26, '45/pdt-P/2021/PN NBA', '2021-10-04', 0, 0, 0, 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -241,15 +243,12 @@ ALTER TABLE `pemberitahuan_tergugat`
   ADD PRIMARY KEY (`id_pemberitahuan_tergugat`);
 
 --
--- Indexes for table `transaksi`
+-- Indexes for table `transaksii`
 --
-ALTER TABLE `transaksi`
+ALTER TABLE `transaksii`
   ADD PRIMARY KEY (`id_transaksi`),
   ADD KEY `id_biaya_daftar` (`id_biaya_daftar`),
-  ADD KEY `id_panggilan_penggugat` (`id_panggilan_penggugat`),
-  ADD KEY `id_panggilan_tergugat` (`id_panggilan_tergugat`),
-  ADD KEY `id_pemberitahuan_penggugat` (`id_pemberitahuan_penggugat`),
-  ADD KEY `id_pemberitahuan_tergugat` (`id_pemberitahuan_tergugat`);
+  ADD KEY `id_biaya_daftar_2` (`id_biaya_daftar`);
 
 --
 -- Indexes for table `user`
@@ -265,7 +264,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `biaya_daftar`
 --
 ALTER TABLE `biaya_daftar`
-  MODIFY `id_biaya_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_biaya_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `kas`
@@ -298,10 +297,10 @@ ALTER TABLE `pemberitahuan_tergugat`
   MODIFY `id_pemberitahuan_tergugat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT for table `transaksii`
 --
-ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+ALTER TABLE `transaksii`
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -314,14 +313,10 @@ ALTER TABLE `user`
 --
 
 --
--- Constraints for table `transaksi`
+-- Constraints for table `transaksii`
 --
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_biaya_daftar`) REFERENCES `biaya_daftar` (`id_biaya_daftar`),
-  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`id_panggilan_penggugat`) REFERENCES `panggilan_penggugat` (`id_panggilan_penggugat`),
-  ADD CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`id_panggilan_tergugat`) REFERENCES `panggilan_tergugat` (`id_panggilan_tergugat`),
-  ADD CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`id_pemberitahuan_penggugat`) REFERENCES `pemberitahuan_penggugat` (`id_pemberitahuan_penggugat`),
-  ADD CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`id_pemberitahuan_tergugat`) REFERENCES `pemberitahuan_tergugat` (`id_pemberitahuan_tergugat`);
+ALTER TABLE `transaksii`
+  ADD CONSTRAINT `transaksii_ibfk_1` FOREIGN KEY (`id_biaya_daftar`) REFERENCES `biaya_daftar` (`id_biaya_daftar`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

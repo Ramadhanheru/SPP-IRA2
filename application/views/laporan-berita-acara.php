@@ -49,8 +49,8 @@
          <?php
                 
                 foreach($query->result() as $q) {
-                $pengeluaran = $q->biaya_daftar+$q->biaya_proses+$q->panggilan_penggugat+$q->panggilan_tergugat+$q->pemberitahuan_penggugat+$q->pemberitahuan_tergugat+$q->pnbp+$q->materai+$q->redaksi+$q->sisa_panjar+$q->delegasi_panggilan+$q->delegasi_pemberitahuan+$q->delegasi_pengiriman;
-                $penerimaan = $q->panjar+$q->tambah_panjar;
+               $pengeluaran =  + $q->sisa_panjar + $q->negara_panjar + $q->panggilan_penggugat + $q->panggilan_tergugat + $q->panggilan_pemohon + $q->pemberitahuan_penggugat + $q->pemberitahuan_tergugat + $q->pemeriksaan +  $q->materai +  $q->pnbp +  $q->biaya_proses + $q->redaksi  + $q->delegasi;
+                $penerimaan = $q->biaya_daftar + $q->tambah_panjar;
 
                 $pengeluaran;
                 $penerimaan;

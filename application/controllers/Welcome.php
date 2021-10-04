@@ -103,6 +103,7 @@ class Welcome extends CI_Controller {
 	public function tambah_transaksi2()
 	{
 		$kategori_biaya = $this->input->post('kategori_biaya');
+		$jenis_biaya = $this->input->post('jenis_biaya');
 		$this->form_validation->set_rules('no_perkara','no_perkara','required|trim');
 		$this->form_validation->set_rules('tanggal','tanggal','required|trim');
 		$this->form_validation->set_rules('kategori_biaya','kategori_biaya','required|trim');
@@ -112,13 +113,145 @@ class Welcome extends CI_Controller {
 
 		}else{
 
-			$data = [
+			if ($kategori_biaya == 'id_biaya_daftar' && $jenis_biaya == 'tambah_panjar' ) {
+				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
-			 	$kategori_biaya => $this->input->post('jenis_biaya', true),
+			 	'tambah_panjar' => $this->input->post('jumlah', true),
 			 	'keterangan' => $this->input->post('keterangan')
 			 	
             ];
+			}
+			else if ($kategori_biaya == 'sisa_panjar' && $jenis_biaya == 'sisa_panjar' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'sisa_panjar' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'sisa_panjar' && $jenis_biaya == 'negara_panjar' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'negara_panjar' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'panggilan' && $jenis_biaya == 'panggilan_penggugat' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'panggilan_penggugat' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'panggilan' && $jenis_biaya == 'panggilan_tergugat' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'panggilan_tergugat' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'panggilan' && $jenis_biaya == 'panggilan_pemohon' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'panggilan_pemohon' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'pemberitahuan' && $jenis_biaya == 'pemberitahuan_penggugat' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'pemberitahuan_penggugat' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'pemberitahuan' && $jenis_biaya == 'pemberitahuan_tergugat' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'pemberitahuan_tergugat' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'pemeriksaan' && $jenis_biaya == 'pemeriksaan' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'pemeriksaan' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'materai' && $jenis_biaya == 'materai' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'materai' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'pnbp' && $jenis_biaya == 'pnbp' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'pnbp' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'biaya_proses' && $jenis_biaya == 'biaya_proses' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'biaya_proses' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'redaksi' && $jenis_biaya == 'redaksi' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'redaksi' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}
+			else if ($kategori_biaya == 'delegasi' && $jenis_biaya == 'delegasi' ) {
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	'delegasi' => $this->input->post('jumlah', true),
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			}else{
+				
+				$data = [
+				'tanggal' => $this->input->post('tanggal',true),
+				'no_perkara' => $this->input->post('no_perkara',true),
+			 	$kategori_biaya => $jenis_biaya,
+			 	'keterangan' => $this->input->post('keterangan')
+			 	
+            ];
+			
+			}
+
+
+			
 
 				$proses = $this->Model_data->tambah_transaksi($data);
 				$this->session->set_flashdata('message','<div class ="alert alert-success" roles="alert"> Data berhasil ditambah ! 
@@ -217,7 +350,7 @@ class Welcome extends CI_Controller {
 		$data['query6'] = $this->db->get_where('kas',['id_kas'=>'1'])->row_array();
 		$data['user'] = $this->db->get_where('user',['username'=> $this->session->userdata('username')])->row_array();
 		$this->load->view('template/header',$data);
-		$this->load->view('rincian_transaksi',$data);
+		$this->load->view('rincian_transaksi2',$data);
 		$this->load->view('template/footer');
 	}
 

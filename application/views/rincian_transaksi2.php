@@ -57,22 +57,48 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>biaya daftar</td>
-                    <td></td>
+                    <td><?= $q->nama_itemm; ?></td>
                     <td><?= number_format($q->biaya_daftar, 2, ',', '.'); ?></td>
+                    <td></td>
                     <td></td>
 
                     </td>
                   </tr>
                 <?php endif ?>
-                <?php if ($q->biaya_proses > 0) : ?>
+                <?php if ($q->tambah_panjar > 0) : ?>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>biaya proses</td>
+                    <td>Tambahan Panjar Biaya Perkara</td>
+                    <td><?= number_format($q->tambah_panjar, 2, ',', '.'); ?></td>
                     <td></td>
-                    <td><?= number_format($q->biaya_proses, 2, ',', '.'); ?></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                <?php if ($q->sisa_panjar > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Pengembalian Sisa Panjar</td>
+                    <td></td>
+                    <td><?= number_format($q->sisa_panjar, 2, ',', '.'); ?></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                <?php if ($q->negara_panjar > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Pengembalian Kepada Negara</td>
+                    <td></td>
+                    <td><?= number_format($q->negara_panjar, 2, ',', '.'); ?></td>
                     <td></td>
 
                     </td>
@@ -83,7 +109,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>biaya panggilan penggugat</td>
+                    <td>Biaya Panggilan Penggugat</td>
                     <td></td>
                     <td><?= number_format($q->panggilan_penggugat, 2, ',', '.'); ?></td>
                     <td></td>
@@ -96,7 +122,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>biaya panggilan tergugat</td>
+                    <td>Biaya Panggilan Tergugat</td>
                     <td></td>
                     <td><?= number_format($q->panggilan_tergugat, 2, ',', '.'); ?></td>
                     <td></td>
@@ -104,12 +130,25 @@
                     </td>
                   </tr>
                 <?php endif ?>
-                <?php if ($q->pemberitahuan_penggugat > 0) : ?>
+                <?php if ($q->panggilan_pemohon > 0) : ?>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>biaya pemberitahuan penggugat</td>
+                    <td>Biaya Panggilan Pemohon</td>
+                    <td></td>
+                    <td><?= number_format($q->panggilan_pemohon, 2, ',', '.'); ?></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                 <?php if ($q->pemberitahuan_penggugat > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Biaya Pemberitahuan Kepada Penggugat</td>
                     <td></td>
                     <td><?= number_format($q->pemberitahuan_penggugat, 2, ',', '.'); ?></td>
                     <td></td>
@@ -122,9 +161,22 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>biaya pemberitahuan tergugat</td>
+                    <td>Biaya Pemberitahuan Kepada Tergugat</td>
                     <td></td>
                     <td><?= number_format($q->pemberitahuan_tergugat, 2, ',', '.'); ?></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                <?php if ($q->pemeriksaan > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Pemeriksaan Setempat</td>
+                    <td></td>
+                    <td><?= number_format($q->pemeriksaan, 2, ',', '.'); ?></td>
                     <td></td>
 
                     </td>
@@ -135,7 +187,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>pnbp</td>
+                    <td>PNBP</td>
                     <td></td>
                     <td><?= number_format($q->pnbp, 2, ',', '.'); ?></td>
                     <td></td>
@@ -148,7 +200,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>materai</td>
+                    <td>Materai</td>
                     <td></td>
                     <td><?= number_format($q->materai, 2, ',', '.'); ?></td>
                     <td></td>
@@ -169,84 +221,33 @@
                     </td>
                   </tr>
                 <?php endif ?>
-                <?php if ($q->panjar > 0) : ?>
+                <?php if ($q->biaya_proses > 0) : ?>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>panjar</td>
-                    <td><?= number_format($q->panjar, 2, ',', '.'); ?></td>
+                    <td>Biaya Proses</td>
+                    <td><?= number_format($q->biaya_proses, 2, ',', '.'); ?></td>
                     <td></td>
                     <td></td>
 
                     </td>
                   </tr>
                 <?php endif ?>
-                <?php if ($q->tambah_panjar > 0) : ?>
+                <?php if ($q->delegasi > 0) : ?>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>tambah panjar</td>
-                    <td><?= number_format($q->tambah_panjar, 2, ',', '.'); ?></td>
+                    <td>Delegasi Pengiriman</td>
+                    <td><?= number_format($q->delegasi, 2, ',', '.'); ?></td>
                     <td></td>
                     <td></td>
 
                     </td>
                   </tr>
                 <?php endif ?>
-                <?php if ($q->sisa_panjar > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>sisa panjar</td>
-                    <td></td>
-                    <td><?= number_format($q->sisa_panjar, 2, ',', '.'); ?></td>
-                    <td></td>
-
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->delegasi_panggilan > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>delegasi panggilan</td>
-                    <td></td>
-                    <td><?= number_format($q->delegasi_panggilan, 2, ',', '.'); ?></td>
-                    <td></td>
-
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->delegasi_pemberitahuan > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>delegasi pemberitahuan</td>
-                    <td></td>
-                    <td><?= number_format($q->delegasi_pemberitahuan, 2, ',', '.') ?></td>
-                    <td></td>
-
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->delegasi_pengiriman > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>delegasi pengiriman</td>
-                    <td></td>
-                    <td><?= number_format($q->delegasi_pengiriman, 2, ',', '.') ?></td>
-                    <td></td>
-
-                    </td>
-                  </tr>
-                <?php endif ?>
+                
 
               <?php $no++;
               } ?>
@@ -254,8 +255,8 @@
               <?php
 
               foreach ($query->result() as $q) {
-                $pengeluaran = $q->biaya_daftar + $q->biaya_proses + $q->panggilan_penggugat + $q->panggilan_tergugat + $q->pemberitahuan_penggugat + $q->pemberitahuan_tergugat + $q->pnbp + $q->materai + $q->redaksi + $q->sisa_panjar + $q->delegasi_panggilan + $q->delegasi_pemberitahuan + $q->delegasi_pengiriman;
-                $penerimaan = $q->panjar + $q->tambah_panjar;
+                $pengeluaran =  + $q->sisa_panjar + $q->negara_panjar + $q->panggilan_penggugat + $q->panggilan_tergugat + $q->panggilan_pemohon + $q->pemberitahuan_penggugat + $q->pemberitahuan_tergugat + $q->pemeriksaan +  $q->materai +  $q->pnbp +  $q->biaya_proses + $q->redaksi  + $q->delegasi;
+                $penerimaan = $q->biaya_daftar + $q->tambah_panjar;
 
                 $pengeluaran;
                 $penerimaan;
