@@ -11,7 +11,7 @@
                 <h5 class="m-0 font-weight-bold text-" style="text-align: center">BUKU KAS BANTU</h5>
               </div>
             <div class="card-header py-3">
-              <?= $this->session->flashdata('message') ?>
+              <?= $this->session->flashdata('messagee') ?>
              
              <!--  <a class="btn btn-success text-white" href="<?= base_url('welcome/export_excel_tanggal') ?>"><em class="fa fa-file-excel"> Eksport Excel </em></a>
               <a class="btn btn-danger text-white" href="pdf.php"><em class="fa fa-file-pdf"> Eksport PDF</em></a> -->

@@ -43,7 +43,7 @@
 									<td></td>
 									<td></td>
 									<td></td>
-									<td></td>
+									<td><?= $q->keterangan; ?></td>
 								</tr>
 								<?php if ($q->biaya_daftar > 0) : ?>
                   <tr>

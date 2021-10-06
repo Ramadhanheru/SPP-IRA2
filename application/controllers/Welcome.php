@@ -520,9 +520,17 @@ class Welcome extends CI_Controller {
 
 		
 		if($this->input->post('excel')&&$this->input->post('tanggal')){
+			if ($this->input->post('tanggal') > date('Y-m-d')) {
+				$this->session->set_flashdata('messagee','<div class ="alert alert-danger" roles="alert"> Harap pilih tanggal yang tidak melebihi hari ini! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				redirect('welcome/laporan');
+			} else {
 				$tanggal = $this->input->post('tanggal');
 			$data['query'] = $this->Model_data->tampil_transaksi_tanggal($tanggal);
 			$this->load->view('excel_tanggal',$data);
+			}
+			
+				
 			
 			
 		}else{
@@ -530,7 +538,12 @@ class Welcome extends CI_Controller {
 		}
 		if($this->input->post('pdf')&&$this->input->post('tanggal')){
 
-			$tanggal = $this->input->post('tanggal');
+			if ($this->input->post('tanggal') > date('Y-m-d')) {
+				$this->session->set_flashdata('messagee','<div class ="alert alert-danger" roles="alert"> Harap pilih tanggal yang tidak melebihi hari ini! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				redirect('welcome/laporan');
+			}else{
+				$tanggal = $this->input->post('tanggal');
 			$data['query'] = $this->Model_data->tampil_transaksi_tanggal($tanggal);
 			$this->load->library('pdf');
 		$this->load->view('pdf_tanggal',$data);
@@ -543,6 +556,9 @@ class Welcome extends CI_Controller {
 	    $this->pdf->load_html($html);
 	    $this->pdf->render();
 	    $this->pdf->stream('SPP-IRA harian.pdf', array('Attachment' =>0));
+			}
+
+			
 		}else{
 			$tanggal = "";
 		}

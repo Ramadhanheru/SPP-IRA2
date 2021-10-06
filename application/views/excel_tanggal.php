@@ -50,7 +50,7 @@ header("Content-Disposition: attachment; filename=SPP-IRA harian.xls");
 				<td></td>
 				<td></td>
 				<td></td>
-				<td></td>
+				<td><?= $q->keterangan; ?></td>
 				<td>
 					<a href="hapus.php?id_laporan=" onclick="return confirm ('Yakin menghapus?');"> <i class="fa fa-trash" style="color: salmon;"></i></a>
 				</td>
