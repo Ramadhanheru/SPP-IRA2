@@ -128,7 +128,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 text-gray-600 medium">Admin <?= $user['username'] ?>
+                <span class="mr-2 text-gray-600 medium">Admin | <?= $user['nama'] ?>
                 </span>
                 <img class="img-profile rounded-circle" src="<?= base_url('assets/img/').$user['photo']; ?>" alt="foto_admin_heru">
               </a>

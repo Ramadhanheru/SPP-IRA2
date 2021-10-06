@@ -198,7 +198,7 @@ class Welcome extends CI_Controller {
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
-			 	'materai' => $this->input->post('jumlah', true),
+			 	'materai' => 10000,
 			 	'keterangan' => $this->input->post('keterangan')
 			 	
             ];
@@ -207,7 +207,7 @@ class Welcome extends CI_Controller {
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
-			 	'pnbp' => $this->input->post('jumlah', true),
+			 	'pnbp' => 10000,
 			 	'keterangan' => $this->input->post('keterangan')
 			 	
             ];
@@ -216,7 +216,7 @@ class Welcome extends CI_Controller {
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
-			 	'biaya_proses' => $this->input->post('jumlah', true),
+			 	'biaya_proses' => 50000,
 			 	'keterangan' => $this->input->post('keterangan')
 			 	
             ];
@@ -225,7 +225,7 @@ class Welcome extends CI_Controller {
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
-			 	'redaksi' => $this->input->post('jumlah', true),
+			 	'redaksi' => 10000,
 			 	'keterangan' => $this->input->post('keterangan')
 			 	
             ];

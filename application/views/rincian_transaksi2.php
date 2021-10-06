@@ -47,7 +47,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td></td>
+                  <td><?= $q->keterangan; ?></td>
 
 
                   </td>

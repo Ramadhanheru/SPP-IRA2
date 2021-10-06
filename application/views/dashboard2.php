@@ -103,10 +103,10 @@
 												<option value="pemberitahuan_penggugat">Biaya Pemberitahuan Kepada Penggugat    </option>
 												<option value="pemberitahuan_tergugat">Biaya Pemberitahuan Kepada Tergugat    </option>
 												<option value="pemeriksaan">Pemeriksaan Setempat   </option>
-												<option value="materai">Materai</option>
-												<option value="pnbp">PNBP</option>
-												<option value="biaya_proses">Biaya Proses</option>
-												<option value="redaksi">Redaksi</option> 
+												<option value="materai">Materai (10.000)</option>
+												<option value="pnbp">PNBP (10.000)</option>
+												<option value="biaya_proses">Biaya Proses (50.000)</option>
+												<option value="redaksi">Redaksi (10.000)</option> 
 												<option value="delegasi">Delegasi Pengiriman</option>
 												</select>
 												<br>
