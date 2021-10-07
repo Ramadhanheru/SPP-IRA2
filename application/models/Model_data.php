@@ -7,18 +7,17 @@ class Model_data extends CI_Model
 	// transaksi
 	public function tampil_transaksi()
 	{
-		$this->db->select('transaksii.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm');
-		$this->db->from('transaksii');
-		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksii.id_biaya_daftar');
+		
 		$this->db->order_by('id_transaksi','DESC');
-		return $this->db->get();
+		$query = $this->db->get('transaksii');
+		return $query;
 
 	}
 	public function tampil_transaksi_tanggal($tanggal)
 	{
-		$this->db->select('transaksii.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm');
+		
+		$this->db->select('*');
 		$this->db->from('transaksii');
-		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksii.id_biaya_daftar');
 		$this->db->where('tanggal',$tanggal);
 		$this->db->order_by('id_transaksi','DESC');
 
@@ -27,9 +26,8 @@ class Model_data extends CI_Model
 	}
 	public function tampil_transaksi_bulan($bulan,$tahun)
 	{
-		$this->db->select('transaksii.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm');
+		$this->db->select('*');
 		$this->db->from('transaksii');
-		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksii.id_biaya_daftar');
 		$this->db->where('MONTH(tanggal)',$bulan);
 		$this->db->where('YEAR(tanggal)',$tahun);
 		$this->db->order_by('id_transaksi','DESC');
@@ -54,11 +52,8 @@ class Model_data extends CI_Model
 	}
 	public function tampil_rincian_transaksi($id)
 	{
-		$this->db->select('transaksii.*, biaya_daftar.harga_item as biaya_daftar,biaya_daftar.nama_item as nama_itemm');
-		$this->db->from('transaksii');
-		$this->db->join('biaya_daftar','biaya_daftar.id_biaya_daftar = transaksii.id_biaya_daftar');
 		$this->db->where('id_transaksi', $id);
-		return $this->db->get();
+		return $this->db->get('transaksii');
 
 	}
 	public function tambah_transaksi($data)

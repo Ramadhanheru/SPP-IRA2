@@ -22,7 +22,7 @@ Begin Page Content -->
                       <th>Nama</th>
                       <th>Jabatan</th>
                       <th>Username</th>
-                      <!-- <th>Password</th> -->
+                      <th>Password</th>
                       <th>Photo</th>
                       <th>Aksi</th>
                     </tr>
@@ -36,7 +36,7 @@ Begin Page Content -->
                         <td><?= $q->nama; ?></td>
                         <td><?= $q->jabatan; ?></td>
                         <td><?= $q->username; ?></td>
-                        <!-- <td><?= $q->password; ?></td> -->
+                         <td><?= password_needs_rehash($q->password, PASSWORD_DEFAULT); ?></td>
                         <td><img src="<?= base_url('assets/img/').$q->photo; ?> " width="70"></td>
                         <td>
                           <a href="<?= base_url('welcome/edit_user/').$q->id_user; ?>"><i class="fa fa-edit" style="color:#2DB28B "></i></a> 

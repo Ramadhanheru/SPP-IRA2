@@ -45,13 +45,52 @@
 									<td></td>
 									<td></td>
 								</tr>
-								<?php if ($q->biaya_daftar > 0) : ?>
+								<?php if ($q->panjar1 > 0) : ?>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><?= $q->nama_itemm; ?></td>
-                    <td><?= number_format($q->biaya_daftar, 2, ',', '.'); ?></td>
+                    <td>Panjar Biaya Perkara</td>
+                    <td><?= number_format($q->panjar1, 2, ',', '.'); ?></td>
+                    <td></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                 <?php if ($q->panjar2 > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Panjar Biaya Perkara Banding</td>
+                    <td><?= number_format($q->panjar2, 2, ',', '.'); ?></td>
+                    <td></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                 <?php if ($q->panjar3 > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Panjar Biaya Perkara Kasasi</td>
+                    <td><?= number_format($q->panjar3, 2, ',', '.'); ?></td>
+                    <td></td>
+                    <td></td>
+
+                    </td>
+                  </tr>
+                <?php endif ?>
+                 <?php if ($q->panjar4 > 0) : ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Panjar Biaya Perkara Peninjauan Kembali</td>
+                    <td><?= number_format($q->panjar4, 2, ',', '.'); ?></td>
                     <td></td>
                     <td></td>
 
@@ -247,7 +286,7 @@
 								
 								foreach($query->result() as $q) {
 								$pengeluaran =  + $q->sisa_panjar + $q->negara_panjar + $q->panggilan_penggugat + $q->panggilan_tergugat + $q->panggilan_pemohon + $q->pemberitahuan_penggugat + $q->pemberitahuan_tergugat + $q->pemeriksaan +  $q->materai +  $q->pnbp +  $q->biaya_proses + $q->redaksi  + $q->delegasi;
-                $penerimaan = $q->biaya_daftar + $q->tambah_panjar;
+                $penerimaan = $q->panjar1 + $q->panjar2 +$q->panjar3 +$q->panjar4 + $q->tambah_panjar;
 
 								$pengeluaran;
 								$penerimaan;
