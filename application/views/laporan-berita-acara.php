@@ -1,6 +1,4 @@
-<script type="text/javascript">
-  window.print();
-</script>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -67,7 +65,7 @@
                 $total_penerimaan = 0.00; 
                 }
 
-                $jumlah1 = ($query6['nominal'] + $total_penerimaan) - $total_pengeluaran;
+                $jumlah1 = ($query9['saldo'] + $total_penerimaan) - $total_pengeluaran;
                 $jumlah2 = ($saldo_konsinyasi + $penerimaan_konsinyasi) - $pengeluaran_konsinyasi;
                 $jumlah3 = ($saldo_eksekusi + $penerimaan_eksekusi) - $pengeluaran_eksekusi;
                 $jumlah4 = ($saldo_pidana + $penerimaan_pidana) - $pengeluaran_pidana;
@@ -91,7 +89,7 @@
               <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">a. Saldo bulan lalu</label>
                 <div class="col-sm-10">
-                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?=  number_format($query6['nominal'],2,',','.'); ?>">
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?=  number_format($query9['saldo'],2,',','.'); ?>">
                 </div>
               </div>
             </div>

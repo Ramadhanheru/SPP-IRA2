@@ -5,6 +5,26 @@ class Model_data extends CI_Model
 {
 
 	// transaksi
+	public function tampil_saldo_awal_tanggal($tanggal){
+		$this->db->select('*');
+		$this->db->from('transaksii');
+		$this->db->where('tanggal',$tanggal);
+		$this->db->order_by('id_transaksi','ASC');
+		$this->db->limit(1);
+
+		return $this->db->get()->row_array();
+
+	}
+	public function update_saldo(){
+
+		$this->db->select('*');
+		$this->db->from('transaksii');
+		$this->db->order_by('id_transaksi','DESC');
+		$this->db->limit(1);
+
+		return $this->db->get()->row_array();
+
+	}
 	public function tampil_transaksi()
 	{
 		
@@ -22,6 +42,17 @@ class Model_data extends CI_Model
 		$this->db->order_by('id_transaksi','DESC');
 
 		return $this->db->get();
+
+	}
+	public function tampil_saldo_awal_bulan($bulan,$tahun){
+		$this->db->select('*');
+		$this->db->from('transaksii');
+		$this->db->where('MONTH(tanggal)',$bulan);
+		$this->db->where('YEAR(tanggal)',$tahun);
+		$this->db->order_by('id_transaksi','ASC');
+		$this->db->limit(1);
+
+		return $this->db->get()->row_array();
 
 	}
 	public function tampil_transaksi_bulan($bulan,$tahun)

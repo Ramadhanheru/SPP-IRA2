@@ -31,6 +31,7 @@ class Welcome extends CI_Controller {
 		$data['query'] = $this->Model_data->tampil_transaksi();
 		$data['query6'] = $this->db->get_where('kas',['id_kas'=>'1'])->row_array();
 		$data['user'] = $this->db->get_where('user',['username'=> $this->session->userdata('username')])->row_array();
+		$data['query7'] = $this->Model_data->update_saldo();
 		
 		$this->load->view('template/header',$data);
 		$this->load->view('dashboard2',$data);
@@ -38,10 +39,13 @@ class Welcome extends CI_Controller {
 	}
 	public function print_berita_acara(){
 
-		
-		
+		if ($this->input->post('bulan2') && $this->input->post('tahun2')  > date('Y-m')) {
+				$this->session->set_flashdata('messagee','<div class ="alert alert-danger" roles="alert"> Harap pilih bulan dan tahun yang tidak melebihi hari ini! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				redirect('welcome/laporan');
+			}else{
 
-			$bulan = $this->input->post('bulan2');
+				$bulan = $this->input->post('bulan2');
 			$tahun = $this->input->post('tahun2');
 
 			$saldo_konsinyasi = $this->input->post('saldo_konsinyasi');
@@ -92,10 +96,25 @@ class Welcome extends CI_Controller {
 			$data['query6'] = $this->db->get_where('kas',['id_kas'=>'1'])->row_array();
 			$data['user'] = $this->db->get_where('user',['username'=> $this->session->userdata('username')])->row_array();
 			$data['query'] = $this->Model_data->tampil_transaksi_bulan($bulan,$tahun);
+			$data['query9'] = $this->Model_data->tampil_saldo_awal_bulan($bulan,$tahun);
+		
+		$this->load->library('pdf');
 		$this->load->view('laporan-berita-acara',$data);
+		 $paper_size='A4';
+	    $orientation='potrait';
+	    $data_header= array('title' => 'Convert to Pdf');
+	    $html = $this->output->get_output();
+	    $this->pdf->set_paper($paper_size, $orientation, $data_header);
+
+	    $this->pdf->load_html($html);
+	    $this->pdf->render();
+	    $this->pdf->stream('SPP-IRA berita acara.pdf', array('Attachment' =>0));
+
+			}
 		
 	}
 	public function tambah_transaksi3(){
+		$kas = $this->input->post('kas');
 
 		$kategori_biaya = $this->input->post('select1');
 		$jenis_biaya = $this->input->post('select2');
@@ -107,65 +126,87 @@ class Welcome extends CI_Controller {
 		}else{
 
 			if ($kategori_biaya == 'panjar' && $jenis_biaya == 'tambah_panjar' ) {
+				$update = $kas + $this->input->post('jumlah', true);
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	'tambah_panjar' => $this->input->post('jumlah', true),
-			 	'keterangan' => $this->input->post('keterangan')
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
 			 	
             ];
 			}
 			else if ($kategori_biaya == 'panjar' && $jenis_biaya == 'panjar1' ) {
+				$update = $kas + 30000;
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	$jenis_biaya => 30000,
-			 	'keterangan' => $this->input->post('keterangan')
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
 			 	
             ];
 			}
 			else if ($kategori_biaya == 'panjar' && $jenis_biaya == 'panjar2' ) {
+				$update = $kas + 50000;
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	$jenis_biaya => 50000,
-			 	'keterangan' => $this->input->post('keterangan')
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
 			 	
             ];
 			}
 			else if ($kategori_biaya == 'panjar' && $jenis_biaya == 'panjar3' ) {
+				$update = $kas + 50000;
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	$jenis_biaya => 50000,
-			 	'keterangan' => $this->input->post('keterangan')
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
 			 	
             ];
 			}
 			else if ($kategori_biaya == 'panjar' && $jenis_biaya == 'panjar4' ) {
+				$update = $kas + 50000;
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	$jenis_biaya => 50000,
-			 	'keterangan' => $this->input->post('keterangan')
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
 			 	
             ];
 			}
-			else if ($kategori_biaya == 'sisa_panjar' || 'panggilan' || 'pemberitahuan' || 'pemeriksaan' || 'delegasi' ) {
+			else if ($kategori_biaya == 'sisa_panjar' || $kategori_biaya == 'panggilan' || $kategori_biaya == 'pemberitahuan' || $kategori_biaya == 'pemeriksaan' || $kategori_biaya == 'delegasi' ) {
+				var_dump($kategori_biaya,$jenis_biaya);
+				die();
+				$update = $kas - $this->input->post('jumlah', true);
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	$jenis_biaya => $this->input->post('jumlah', true),
-			 	'keterangan' => $this->input->post('keterangan')
-			 	
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
             ];
 			}else{
+
+				$update = $kas - $jenis_biaya;
 				$data = [
 				'tanggal' => $this->input->post('tanggal',true),
 				'no_perkara' => $this->input->post('no_perkara',true),
 			 	$kategori_biaya => $jenis_biaya,
-			 	'keterangan' => $this->input->post('keterangan')
-			 	
+			 	'keterangan' => $this->input->post('keterangan'),
+			 	'saldo' => $kas,
+			 	'update_saldo' => $update
             ];
 			}
 
@@ -592,6 +633,7 @@ class Welcome extends CI_Controller {
 				'tahun' => $this->input->post('tahun')
 
 			);
+		
 		$data['query6'] = $this->db->get_where('kas',['id_kas'=>'1'])->row_array();
 		$data['user'] = $this->db->get_where('user',['username'=> $this->session->userdata('username')])->row_array();
 
@@ -603,6 +645,7 @@ class Welcome extends CI_Controller {
 				redirect('welcome/laporan');
 			} else {
 				$tanggal = $this->input->post('tanggal');
+				$data['query9'] = $this->Model_data->tampil_saldo_awal_tanggal($tanggal);
 			$data['query'] = $this->Model_data->tampil_transaksi_tanggal($tanggal);
 			$this->load->view('excel_tanggal',$data);
 			}
@@ -621,8 +664,9 @@ class Welcome extends CI_Controller {
 				redirect('welcome/laporan');
 			}else{
 				$tanggal = $this->input->post('tanggal');
+				$data['query9'] = $this->Model_data->tampil_saldo_awal_tanggal($tanggal);
 			$data['query'] = $this->Model_data->tampil_transaksi_tanggal($tanggal);
-			$this->load->library('pdf');
+		$this->load->library('pdf');
 		$this->load->view('pdf_tanggal',$data);
 		 $paper_size='A4';
 	    $orientation='potrait';
@@ -643,6 +687,7 @@ class Welcome extends CI_Controller {
 		if($this->input->post('excel')&&$this->input->post('bulan')&&$this->input->post('tahun')){
 			$bulan = $this->input->post('bulan');
 			$tahun = $this->input->post('tahun');
+			$data['query9'] = $this->Model_data->tampil_saldo_awal_bulan($bulan,$tahun);
 			$data['query'] = $this->Model_data->tampil_transaksi_bulan($bulan,$tahun);
 			$this->load->view('excel_bulan',$data);
 		}else{
@@ -650,8 +695,14 @@ class Welcome extends CI_Controller {
 		}
 
 		if($this->input->post('pdf')&&$this->input->post('bulan')&&$this->input->post('tahun')){
-			$bulan = $this->input->post('bulan');
+			if ($this->input->post('bulan') && $this->input->post('tahun')  > date('Y-m')) {
+				$this->session->set_flashdata('messagee','<div class ="alert alert-danger" roles="alert"> Harap pilih bulan dan tahun yang tidak melebihi hari ini! 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button> </div>');
+				redirect('welcome/laporan');
+			} else {
+				$bulan = $this->input->post('bulan');
 			$tahun = $this->input->post('tahun');
+			$data['query9'] = $this->Model_data->tampil_saldo_awal_bulan($bulan,$tahun);
 			$data['query'] = $this->Model_data->tampil_transaksi_bulan($bulan,$tahun);
 			$this->load->library('pdf');
 		$this->load->view('pdf_bulanan',$data);
@@ -664,6 +715,9 @@ class Welcome extends CI_Controller {
 	    $this->pdf->load_html($html);
 	    $this->pdf->render();
 	    $this->pdf->stream('SPP-IRA bulanan.pdf', array('Attachment' =>0));
+			}
+			
+			
 		}else{
 			$tanggal = "";
 		}
@@ -678,6 +732,7 @@ class Welcome extends CI_Controller {
 			$data['query'] = $this->Model_data->tampil_transaksi_tanggal($tanggal);
 			$data['query7'] = $this->Model_data->tampil_user();
 			$data['query8'] = $this->Model_data->tampil_transaksi();
+		$data['query9'] = $this->Model_data->tampil_saldo_awal_tanggal($tanggal);
 		$this->load->view('template/header',$data);
 		$this->load->view('laporan',$data);
 		$this->load->view('template/footer');
@@ -749,11 +804,6 @@ class Welcome extends CI_Controller {
 	{
 		$data['user'] = $this->db->get_where('user',['username'=> $this->session->userdata('username')])->row_array();
 		$data['query'] = $this->Model_data->tampil_kas();
-		$data['query1'] = $this->Model_data->tampil_biaya_daftar();
-		$data['query2'] = $this->Model_data->tampil_panggilan_penggugat();
-		$data['query3'] = $this->Model_data->tampil_panggilan_tergugat();
-		$data['query4'] = $this->Model_data->tampil_pemberitahuan_penggugat();
-		$data['query5'] = $this->Model_data->tampil_pemberitahuan_tergugat();
 
 		$this->load->view('template/header',$data);
 		$this->load->view('data',$data);

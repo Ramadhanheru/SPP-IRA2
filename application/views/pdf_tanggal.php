@@ -29,9 +29,9 @@
 									<td></td>
 									<td></td>
 									<td>Saldo kas</td>
-									<td><?= number_format($query6['nominal'],2,',','.'); ?></td>
+									<td><?= number_format($query9['saldo'],2,',','.'); ?></td>
 									<td></td>
-									<td>saldo kas awal</td>
+									<td>saldo kas</td>
 								</tr>
 								<?php
 								$no=1;
@@ -324,7 +324,7 @@
 									<td></td>
 									<th>Saldo</th>
 									<td></td>
-									<td><?= number_format($query6['nominal'],2,',','.'); ?></td>
+									<td><?= number_format($query9['saldo'],2,',','.'); ?></td>
 									<td></td>
 									<td></td>
 								</tr>
@@ -350,7 +350,7 @@
 									<td></td>
 									<td></td>
 									<th>Sisa</th>
-									<td><?= number_format(($query6['nominal'] + $total_penerimaan) - $total_pengeluaran,2,',','.'); ?></td>
+									<td><?= number_format(($query9['saldo'] + $total_penerimaan) - $total_pengeluaran,2,',','.'); ?></td>
 									<td></td>
 									<td></td>
 									<td></td>

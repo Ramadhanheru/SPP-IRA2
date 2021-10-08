@@ -26,10 +26,19 @@
 								</button>
 							</div>
 							<div class="col">
+								<?php
+
+											 if($query7['update_saldo']){ ?>
 								<div class="input-group mb-3">
+									<span class="input-group-text text-white bg-success" id="basic-addon31">Saldo Kas</span>
+									<input name="kas" type="text" class="form-control" id="kas" readonly placeholder="" value=" <?= number_format($query7['update_saldo'], 2, ',', '.'); ?> " readonly aria-describedby="basic-addon31">
+								</div>
+								<?php }else{ ?>
+									<div class="input-group mb-3">
 									<span class="input-group-text text-white bg-success" id="basic-addon31">Saldo Kas</span>
 									<input name="kas" type="text" class="form-control" id="kas" readonly placeholder="" value=" <?= number_format($query6['nominal'], 2, ',', '.'); ?> " readonly aria-describedby="basic-addon31">
 								</div>
+							<?php } ?>
 							</div>
 						</div>
 						<!-- The Modal -->
@@ -95,6 +104,13 @@
 												<span class="input-group-text text-white bg-success" id="basic-addon3">Keterangan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 												<input type="text" class="form-control" id="keterangan" name="keterangan" aria-describedby="basic-addon3">
 											</div>
+											<?php
+
+											 if($query7['update_saldo']){ ?>
+												<input name="kas" type="hidden" class="form-control" id="kas" readonly value=" <?= $query7['update_saldo']; ?> " readonly aria-describedby="basic-addon31">
+											<?php }else{ ?>
+											<input name="kas" type="hidden" class="form-control" id="kas" readonly value=" <?= $query6['nominal']; ?> " readonly aria-describedby="basic-addon31">
+										<?php } ?>
 										</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">

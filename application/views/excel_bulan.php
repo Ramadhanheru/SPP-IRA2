@@ -33,7 +33,7 @@ header("Content-Disposition: attachment; filename=SPP-IRA bulanan.xls");
 				<td></td>
 				<td></td>
 				<td>Saldo kas</td>
-				<td><?= number_format($query6['nominal'],2,',','.'); ?></td>
+				<td><?= number_format($query9['saldo'],2,',','.'); ?></td>
 				<td></td>
 				<td>saldo kas awal</td>
 				<td>
@@ -269,8 +269,8 @@ header("Content-Disposition: attachment; filename=SPP-IRA bulanan.xls");
                     <td></td>
                     <td></td>
                     <td>Biaya Proses</td>
-                    <td><?= number_format($q->biaya_proses, 2, ',', '.'); ?></td>
                     <td></td>
+                    <td><?= number_format($q->biaya_proses, 2, ',', '.'); ?></td>
                     <td></td>
 
                     </td>
@@ -282,8 +282,8 @@ header("Content-Disposition: attachment; filename=SPP-IRA bulanan.xls");
                     <td></td>
                     <td></td>
                     <td>Delegasi Pengiriman</td>
-                    <td><?= number_format($q->delegasi, 2, ',', '.'); ?></td>
                     <td></td>
+                    <td><?= number_format($q->delegasi, 2, ',', '.'); ?></td>
                     <td></td>
 
                     </td>
@@ -336,7 +336,7 @@ header("Content-Disposition: attachment; filename=SPP-IRA bulanan.xls");
 				<td></td>
 				<th>Saldo</th>
 				<td></td>
-				<td><?= number_format($query6['nominal'],2,',','.'); ?></td>
+				<td><?= number_format($query9['saldo'],2,',','.'); ?></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -365,7 +365,7 @@ header("Content-Disposition: attachment; filename=SPP-IRA bulanan.xls");
 				<td></td>
 				<td></td>
 				<th>Sisa</th>
-				<td><?= number_format(($query6['nominal'] + $total_penerimaan) - $total_pengeluaran,2,',','.'); ?></td>
+				<td><?= number_format(($query9['saldo'] + $total_penerimaan) - $total_pengeluaran,2,',','.'); ?></td>
 				<td></td>
 				<td></td>
 				<td></td>

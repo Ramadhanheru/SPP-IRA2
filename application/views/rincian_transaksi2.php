@@ -25,268 +25,136 @@
                 <th>Penerimaan</th>
                 <th>Pengeluaran</th>
               </tr>
+              <?php
+              $no = 1;
+              foreach ($query->result() as $q) { ?>
               <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>Saldo kas</td>
-                <td><?= number_format($query6['nominal'], 2, ',', '.'); ?></td>
+                <td><?= number_format($q->saldo, 2, ',', '.'); ?></td>
                 <td></td>
                 <td>saldo kas awal</td>
 
 
                 </td>
               </tr>
-              <?php
-              $no = 1;
-              foreach ($query->result() as $q) { ?>
                 <tr>
                   <td><?= $q->tanggal; ?></td>
                   <td><?= $no; ?></td>
                   <td><?= $q->no_perkara; ?></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><?= $q->keterangan; ?></td>
 
-
-                  </td>
-                </tr>
-                <?php if ($q->panjar1 > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <!-- data tanpa enter -->
+                  <?php if ($q->panjar1 > 0) : ?>
                     <td>Panjar Biaya Perkara</td>
                     <td><?= number_format($q->panjar1, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                 <?php if ($q->panjar2 > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <!-- Panjar Biaya Perkara Banding -->
+                  <?php if ($q->panjar2 > 0) : ?>
                     <td>Panjar Biaya Perkara Banding</td>
                     <td><?= number_format($q->panjar2, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                 <?php if ($q->panjar3 > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
+                  <!--Panjar Biaya Perkara Kasasi  -->
+                  <?php if ($q->panjar3 > 0) : ?>
                     <td></td>
                     <td>Panjar Biaya Perkara Kasasi</td>
                     <td><?= number_format($q->panjar3, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                 <?php if ($q->panjar4 > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <!-- Panjar Biaya Perkara Peninjauan Kembali -->
+                  <?php if ($q->panjar4 > 0) : ?>
                     <td>Panjar Biaya Perkara Peninjauan Kembali</td>
                     <td><?= number_format($q->panjar4, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->tambah_panjar > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->tambah_panjar > 0) : ?>
                     <td>Tambahan Panjar Biaya Perkara</td>
                     <td><?= number_format($q->tambah_panjar, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->sisa_panjar > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->sisa_panjar > 0) : ?>
                     <td>Pengembalian Sisa Panjar</td>
                     <td></td>
                     <td><?= number_format($q->sisa_panjar, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->negara_panjar > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->negara_panjar > 0) : ?>
                     <td>Pengembalian Kepada Negara</td>
                     <td></td>
                     <td><?= number_format($q->negara_panjar, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->panggilan_penggugat > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->panggilan_penggugat > 0) : ?>
                     <td>Biaya Panggilan Penggugat</td>
                     <td></td>
                     <td><?= number_format($q->panggilan_penggugat, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->panggilan_tergugat > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->panggilan_tergugat > 0) : ?>
                     <td>Biaya Panggilan Tergugat</td>
                     <td></td>
                     <td><?= number_format($q->panggilan_tergugat, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->panggilan_pemohon > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->panggilan_pemohon > 0) : ?>
                     <td>Biaya Panggilan Pemohon</td>
                     <td></td>
                     <td><?= number_format($q->panggilan_pemohon, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                 <?php if ($q->pemberitahuan_penggugat > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->pemberitahuan_penggugat > 0) : ?>
                     <td>Biaya Pemberitahuan Kepada Penggugat</td>
                     <td></td>
                     <td><?= number_format($q->pemberitahuan_penggugat, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->pemberitahuan_tergugat > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->pemberitahuan_tergugat > 0) : ?>
                     <td>Biaya Pemberitahuan Kepada Tergugat</td>
                     <td></td>
                     <td><?= number_format($q->pemberitahuan_tergugat, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->pemeriksaan > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->pemeriksaan > 0) : ?>
                     <td>Pemeriksaan Setempat</td>
                     <td></td>
                     <td><?= number_format($q->pemeriksaan, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->pnbp > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->pnbp > 0) : ?>
                     <td>PNBP</td>
                     <td></td>
                     <td><?= number_format($q->pnbp, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->materai > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->materai > 0) : ?>
                     <td>Materai</td>
                     <td></td>
                     <td><?= number_format($q->materai, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->redaksi > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->redaksi > 0) : ?>
                     <td>redaksi</td>
                     <td></td>
                     <td><?= number_format($q->redaksi, 2, ',', '.'); ?></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->biaya_proses > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->biaya_proses > 0) : ?>
                     <td>Biaya Proses</td>
                     <td><?= number_format($q->biaya_proses, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                <?php if ($q->delegasi > 0) : ?>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <?php if ($q->delegasi > 0) : ?>
                     <td>Delegasi Pengiriman</td>
                     <td><?= number_format($q->delegasi, 2, ',', '.'); ?></td>
-                    <td></td>
-                    <td></td>
+                  <?php endif ?>
 
-                    </td>
-                  </tr>
-                <?php endif ?>
-                
+                  <td></td>
+                  <td></td>
+                </tr>
+                <!-- akhir tabel -->
 
               <?php $no++;
               } ?>
@@ -294,8 +162,8 @@
               <?php
 
               foreach ($query->result() as $q) {
-                $pengeluaran =  + $q->sisa_panjar + $q->negara_panjar + $q->panggilan_penggugat + $q->panggilan_tergugat + $q->panggilan_pemohon + $q->pemberitahuan_penggugat + $q->pemberitahuan_tergugat + $q->pemeriksaan +  $q->materai +  $q->pnbp +  $q->biaya_proses + $q->redaksi  + $q->delegasi;
-                $penerimaan = $q->panjar1 + $q->panjar2 +$q->panjar3 +$q->panjar4 + $q->tambah_panjar;
+                $pengeluaran =  +$q->sisa_panjar + $q->negara_panjar + $q->panggilan_penggugat + $q->panggilan_tergugat + $q->panggilan_pemohon + $q->pemberitahuan_penggugat + $q->pemberitahuan_tergugat + $q->pemeriksaan +  $q->materai +  $q->pnbp +  $q->biaya_proses + $q->redaksi  + $q->delegasi;
+                $penerimaan = $q->panjar1 + $q->panjar2 + $q->panjar3 + $q->panjar4 + $q->tambah_panjar;
 
                 $pengeluaran;
                 $penerimaan;
@@ -304,12 +172,12 @@
                 $sum_penerimaan[] = $penerimaan;
               }
               if ($query->result()) {
-                  $total_pengeluaran = array_sum($sum_pengeluaran);
-                $total_penerimaan = array_sum($sum_penerimaan); 
-                } else {
-                  $total_pengeluaran = 0.00;
-                $total_penerimaan = 0.00; 
-                } ?>
+                $total_pengeluaran = array_sum($sum_pengeluaran);
+                $total_penerimaan = array_sum($sum_penerimaan);
+              } else {
+                $total_pengeluaran = 0.00;
+                $total_penerimaan = 0.00;
+              } ?>
               <tr>
                 <td></td>
                 <td></td>
@@ -337,7 +205,7 @@
                 <td></td>
                 <th>Saldo</th>
                 <td></td>
-                <td><?= number_format($query6['nominal'], 2, ',', '.'); ?></td>
+                <td><?= number_format($q->saldo, 2, ',', '.'); ?></td>
                 <td></td>
                 <td></td>
 
@@ -366,7 +234,7 @@
                 <td></td>
                 <td></td>
                 <th>Sisa</th>
-                <td><?= number_format(($query6['nominal'] + $total_penerimaan) - $total_pengeluaran, 2, ',', '.'); ?></td>
+                <td><?= number_format(($q->saldo + $total_penerimaan) - $total_pengeluaran, 2, ',', '.'); ?></td>
                 <td></td>
                 <td></td>
                 <td></td>
