@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2021 at 07:57 PM
+-- Generation Time: Oct 08, 2021 at 04:10 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -68,16 +68,21 @@ CREATE TABLE `transaksii` (
   `biaya_proses` int(11) NOT NULL DEFAULT 0,
   `redaksi` int(11) NOT NULL DEFAULT 0,
   `delegasi` int(11) NOT NULL DEFAULT 0,
-  `keterangan` varchar(60) DEFAULT NULL
+  `keterangan` varchar(60) DEFAULT NULL,
+  `saldo` int(11) NOT NULL,
+  `update_saldo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaksii`
 --
 
-INSERT INTO `transaksii` (`id_transaksi`, `no_perkara`, `tanggal`, `panjar1`, `panjar2`, `panjar3`, `panjar4`, `tambah_panjar`, `sisa_panjar`, `negara_panjar`, `panggilan_penggugat`, `panggilan_tergugat`, `panggilan_pemohon`, `pemberitahuan_penggugat`, `pemberitahuan_tergugat`, `pemeriksaan`, `materai`, `pnbp`, `biaya_proses`, `redaksi`, `delegasi`, `keterangan`) VALUES
-(32, 'abcdf123', '2021-10-07', 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'bbb'),
-(33, 'aaa', '2021-10-07', 0, 0, 0, 0, 0, 0, 1000000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ccc');
+INSERT INTO `transaksii` (`id_transaksi`, `no_perkara`, `tanggal`, `panjar1`, `panjar2`, `panjar3`, `panjar4`, `tambah_panjar`, `sisa_panjar`, `negara_panjar`, `panggilan_penggugat`, `panggilan_tergugat`, `panggilan_pemohon`, `pemberitahuan_penggugat`, `pemberitahuan_tergugat`, `pemeriksaan`, `materai`, `pnbp`, `biaya_proses`, `redaksi`, `delegasi`, `keterangan`, `saldo`, `update_saldo`) VALUES
+(35, '52/pdt-P/2021/PN NBA', '2021-10-08', 30000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'AHAH', 3472000, 3502000),
+(36, 'abcdf123', '2021-10-08', 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'aaa', 3502000, 3552000),
+(37, 'aaa', '2021-10-08', 0, 0, 0, 0, 150000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'bbb', 3552000, 3702000),
+(38, '52/pdt-P/2021/PN NBA', '2021-10-08', 0, 0, 0, 0, 0, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 3702000, 3700000),
+(39, '52/pdt-P/2021/PN NBA', '2021-10-08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50000, 0, 0, 'ccc', 3700000, 3650000);
 
 -- --------------------------------------------------------
 
@@ -140,7 +145,7 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT for table `transaksii`
 --
 ALTER TABLE `transaksii`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user`
